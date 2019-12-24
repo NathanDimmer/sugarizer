@@ -69,6 +69,22 @@ function runactivity(act,doc,colors,env,datastore,sizepalette,tutorial){
 			tutorial.start();
 		});
 
+		document.getElementById("fullscreen-button").addEventListener('click', function() {
+			document.getElementById("main-toolbar").style.opacity = 0;
+			document.getElementById("unfullscreen-button").style.visibility = "visible";
+			document.getElementById("canvas").style.top = "0px";
+			canvas.height += 55;
+			g.initialiseFromArray();
+		});
+
+		document.getElementById("unfullscreen-button").addEventListener('click', function() {
+			document.getElementById("main-toolbar").style.opacity = 1;
+			document.getElementById("unfullscreen-button").style.visibility = "hidden";
+			document.getElementById("canvas").style.top = "55px";
+			canvas.height -= 55;
+			g.initialiseFromArray();
+		});
+
 		window.addEventListener('activityStop', function (eve) {
 			eve.preventDefault();
 			g.stop();
